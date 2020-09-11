@@ -1,4 +1,3 @@
-import AllBook from './components/AllBook.vue';
 import Catalogo from './components/Catalogo.vue';
 import MiCuenta from './components/MiCuenta.vue';
 import Producto from './components/Producto.vue';

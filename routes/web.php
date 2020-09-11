@@ -5,43 +5,37 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
-/**********************************************************/
-//rutas para tipo
-/**********************************************************/
-//accede a la vista tipo
-Route::get('/tipo','TipoController@index')->middleware(['auth','role']);
-//mostrar todos
-Route::get('/tipo/show','TipoController@show');
-Route::get('/tipo/showAll','TipoController@showAll');
-//guardar
-Route::post('/tipo/store','TipoController@store');
-//buscar y obtener el registro a editar
-Route::get('/tipo/edit/{id}','TipoController@edit');
-//actualizar
-Route::put('tipo/update/{id}','TipoController@update');
-//eliminar
-Route::delete('tipo/destroy/{id}','TipoController@destroy');
-/***********************************************************/
 
-/**********************************************************/
-//rutas para producto
-/**********************************************************/
-//accede a la vista tipo
-Route::get('/producto', 'ProductoController@index')->middleware(['auth','role']);;
-//mostrar todos los productos
-Route::get('/producto/show','ProductoController@show');
-//buscar un producto
-Route::post('/producto/search','ProductoController@search');
-//buscar productos por tipo
-Route::post('/producto/searchType','ProductoController@searchType');
-//guardar producto
-Route::post('/producto/store','ProductoController@store');
-//buscar y obtener el registro a editar
-Route::get('/producto/edit/{id}','ProductoController@edit');
-//actualizar producto
-Route::put('producto/update/{id}','ProductoController@update');
-//eliminar producto
-Route::delete('producto/destroy/{id}','ProductoController@destroy');
+Route::group(['prefix' => 'tipo'], function () {
+    //muestra todos los registros
+    Route::get('/show','TipoController@show');
+    //muestra lor registros en el select
+    Route::get('/showAll','TipoController@showAll');
+    //guardar
+    Route::post('/store','TipoController@store');
+    //buscar y obtener el registro a editar
+    Route::get('/edit/{id}','TipoController@edit');
+    //actualizar
+    Route::put('/update/{id}','TipoController@update');
+    //eliminar
+    Route::delete('/destroy/{id}','TipoController@destroy');
+});
+
+Route::group(['prefix' => 'producto'], function () {
+    Route::get('/show','ProductoController@show');
+    //buscar un producto
+    Route::post('/search','ProductoController@search');
+    //buscar productos por tipo
+    Route::post('/searchType','ProductoController@searchType');
+    //guardar producto
+    Route::post('/store','ProductoController@store');
+    //buscar y obtener el registro a editar
+    Route::get('/edit/{id}','ProductoController@edit');
+    //actualizar producto
+    Route::put('/update/{id}','ProductoController@update');
+    //eliminar producto
+    Route::delete('/destroy/{id}','ProductoController@destroy');
+    });
 /***********************************************************/
 
 //accede a la vista tipo
@@ -87,3 +81,8 @@ Route::post('/user/update','UserController@update');
 Route::get('/ventas','VentasController@index');
 //mostrar las ventas
 Route::get('/ventas/all','VentasController@show');
+Route::get('/ventas/orders','VentasController@show');
+
+Route::get('/home', function () {
+    return view('layouts.app');
+})->name('home');

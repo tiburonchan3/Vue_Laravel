@@ -113,5 +113,20 @@
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}" defer></script>
+<script>
+    //configuracion de login y registro
+    //contante que almacena el boton
+    const registerButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+    //evento click del boton de registro
+    registerButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+    //evento click del boton de login
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
 </body>
 </html>

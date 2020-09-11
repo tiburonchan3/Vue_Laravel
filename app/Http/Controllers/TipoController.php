@@ -36,11 +36,11 @@ class TipoController extends Controller
             'name'=>request('name'),
             'updated_at'=>Carbon::now()
         ]);
-       return json_encode($tipo);
+       return response()->json("Se actualizo con exito");
     }
     public function destroy($id)
     {
         Tipo::destroy($id);
-        return;
+        return response()->json("Se Elimino el registro");;
     }
 }

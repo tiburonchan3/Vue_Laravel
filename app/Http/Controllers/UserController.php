@@ -35,7 +35,7 @@ class UserController extends Controller
             //se renombra el nombre de la imagen
             $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
             //se guarda la imagen en una carpeta dentro del proyecto
-            Image::make($request->get('avatar'))->save(public_path('images/').$name);
+            Image::make($request->get('avatar'))->resize(510,510)->save(public_path('images/usuarios/').$name);
         }
         //si no se recibe una imagen del request
         else{

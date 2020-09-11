@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-
+use App\Producto;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\json_decode;

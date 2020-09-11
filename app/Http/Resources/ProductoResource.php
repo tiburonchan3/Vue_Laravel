@@ -23,7 +23,7 @@ class ProductoResource extends JsonResource
             'id_tipo'=>$this->resource->id_tipo,
             'tipo'=>$this->resource->tipo->name,
             'created_at'=>$this->resource->created_at->diffForHumans(),
-            'updated_at'=>$this->resource->updated_at->diffForHumans()
+            'updated_at'=>$this->resource->updated_at->diffForHumans(),
         ];
     }
 }

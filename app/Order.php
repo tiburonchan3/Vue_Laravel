@@ -10,11 +10,9 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class,'id_cliente');
-
     }
     public function producto()
     {
         return $this->belongsTo(Producto::class,'id_producto');
-
     }
 }

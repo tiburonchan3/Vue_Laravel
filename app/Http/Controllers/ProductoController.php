@@ -17,7 +17,7 @@ class ProductoController extends Controller
         return view('producto.productType');
     }
     public function show(){
-        return ProductoResource::collection(Producto::latest()->paginate(5));
+        return ProductoResource::collection(Producto::latest()->paginate(8));
     }
     public function store(Request $request){
         $this->validate($request, [
@@ -26,24 +26,25 @@ class ProductoController extends Controller
             'id_tipo'=>'required',
             'stock'=>'required',
             'precio'=>'required'
-    ]);
+        ]);
 
-    if($request->get('image'))
-    {
-        $image = $request->get('image');
-        $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-        Image::make($request->get('image'))->save(public_path('images/').$name);
-    }
+        if($request->get('image'))
+        {
+            $image = $request->get('image');
+            $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            Image::make($request->get('image'))->resize(510,510)->save(public_path('images/productos/').$name);
+        }else{
+            $name = 'producto.jpg';
+        }
 
-   $producto = Producto::create([
-    'nombre'=>request('nombre'),
-    'precio'=>request('precio'),
-    'stock'=>request('stock'),
-    'image'=>$name,
-    'id_tipo'=>request('id_tipo')
-
-   ]);
-   return ProductoResource::make($producto);
+        $producto = Producto::create([
+            'nombre'=>request('nombre'),
+            'precio'=>request('precio'),
+            'stock'=>request('stock'),
+            'image'=>$name,
+            'id_tipo'=>request('id_tipo')
+        ]);
+        return ProductoResource::make($producto);
     }
     public function edit($id)
     {

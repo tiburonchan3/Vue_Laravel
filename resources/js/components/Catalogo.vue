@@ -197,7 +197,7 @@
                             <tbody>
                                 <tr v-for="(cart) in  carts" :key="cart.id">
                                     <td>
-                                        <img :src="'/images/'+cart.image" alt="" width="50" height="50">
+                                        <img :src="'/images/productos/'+cart.image" alt="" width="50" height="50">
                                     </td>
                                     <td>{{cart.nombre}}</td>
                                     <td>{{cart.precio}}</td>

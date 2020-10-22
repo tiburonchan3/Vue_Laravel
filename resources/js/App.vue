@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="text-left container mt-4">
-            <router-link to="/home"><img src="/images/the.png" width="200px"></router-link>
+            <router-link exact to="/home"><img src="/images/the.png" width="200px"></router-link>
         </div>
 
         <nav class="navbar-dark container mt-4">

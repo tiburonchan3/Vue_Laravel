@@ -7,9 +7,9 @@
         <nav class="navbar-dark container mt-4">
             <div class="navbar-content">
                 <div class="verify" v-if="isAutenticated && !isAdmin">
-                    <router-link to="/cuenta" class="nav-child"><span @click="Show()">Mi cuenta</span></router-link>
-                    <router-link to="/catalogo" class="nav-child"><span @click="Show()">Catalogo de comida</span></router-link>
-                    <router-link to="/compras" class="nav-child"><span @click="Show()">Mis compras</span></router-link>
+                    <router-link exact to="/cuenta" class="nav-child"><span @click="Show()">Mi cuenta</span></router-link>
+                    <router-link exact to="/catalogo" class="nav-child"><span @click="Show()">Catalogo de comida</span></router-link>
+                    <router-link exact to="/compras" class="nav-child"><span @click="Show()">Mis compras</span></router-link>
                 </div>
                 <div v-if="isAdmin && isAutenticated" class="verify">
                     <router-link to="/productos" class="nav-child"><span @click="Show()">Productos</span></router-link>
@@ -58,6 +58,7 @@ $second-color:#FF4B2B;
 }
  body{
      background: #424A60;
+     margin-bottom: 80px;
      div{
         .navbar-dark{
             .navbar-content{

@@ -9,6 +9,7 @@ class Producto extends Model
 
     protected $fillable =['nombre','precio','stock','id_tipo','image'];
 
+
    public function tipo()
    {
        return $this->belongsTo(Tipo::class,'id_tipo');

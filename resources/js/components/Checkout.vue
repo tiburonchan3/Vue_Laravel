@@ -134,8 +134,8 @@ export default {
                     //se elimina del arreglo de productos en el carrito
                     this.carts.splice(cart,1);
                   toast.fire({
-                    icon: 'success',
-                    title: 'Se agrego a la orden ',
+                    icon: 'warning',
+                    title: 'eliminaste el producto',
                 });
                     //se ejecuta el metodo que guarda el carrito para refrescar
                     this.storeCart();

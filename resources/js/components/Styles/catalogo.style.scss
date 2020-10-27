@@ -113,7 +113,7 @@ $second-color:#FF4B2B;
     margin-top:10px;
 }
 .review-title{
-    font-size: 56pt;
+    font-size: 35pt;
 }
 .review-star{
     margin: 0 0 10px 0;
@@ -127,8 +127,8 @@ $second-color:#FF4B2B;
     text-align: center;
     color: white;
 }
-.bar-5 {height: 18px; background: #57bb8a;}
+.bar-5 {height: 18px; width: 0; background: #57bb8a;}
 .bar-4 {height: 18px; background-color: #9ace6a;}
-.bar-3 {height: 18px; background-color: #ffcf02;}
-.bar-2 {height: 18px; background-color: #ff9f02;}
-.bar-1 {height: 18px; background-color: #ff6f31;}
+.bar-3 {height: 18px; width: 0; background-color: #ffcf02;}
+.bar-2 {height: 18px; width: 0; background-color: #ff9f02;}
+.bar-1 {height: 18px; width: 0; background-color: #ff6f31;}

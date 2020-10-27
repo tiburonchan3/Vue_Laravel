@@ -2233,11 +2233,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       myRating: [],
       //obtiene todos los ratings del producto
       AllRating: [],
-      bar1: 0,
-      bar2: 0,
-      bar3: 0,
-      bar4: 0,
-      bar5: 0
+      bar_1: 0,
+      bar_2: 0,
+      bar_3: 0,
+      bar_5: 0,
+      bar_4: 0
     };
   },
   methods: {
@@ -2358,33 +2358,50 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
 
         var avg = sum / datos.data.length;
-        _this5.totalrate = parseFloat(avg.toFixed(1));
+        var bar1 = 0;
+        var bar2 = 0;
+        var bar3 = 0;
+        var bar4 = 0;
+        var bar5 = 0;
+        console.log(sum);
+
+        if (avg > 0) {
+          _this5.totalrate = parseFloat(sum.toFixed(1));
+        } else {
+          _this5.totalrate = 0;
+        }
 
         for (var j = 0; j < datos.data.length; j++) {
           if (parseInt(datos.data[j]['rating']) == '1') {
-            _this5.bar1 += 1;
+            bar1 += 1;
           }
 
           if (parseInt(datos.data[j]['rating']) == '2') {
-            _this5.bar2 += 1;
+            bar2 += 1;
           }
 
           if (parseInt(datos.data[j]['rating']) == '3') {
-            _this5.bar3 += 1;
+            bar3 += 1;
           }
 
           if (parseInt(datos.data[j]['rating']) == '4') {
-            _this5.bar4 += 1;
+            bar4 += 1;
           }
 
           if (parseInt(datos.data[j]['rating']) == '5') {
-            _this5.bar5 += 1;
+            bar5 += 1;
           }
         }
+
+        _this5.bar_1 = bar1;
+        _this5.bar_2 = bar2;
+        _this5.bar_3 = bar3;
+        _this5.bar_4 = bar4;
+        _this5.bar_5 = bar5;
       }) //en caso de error
       ["catch"](function (err) {
         //se muestra el mensaje de error
-        console.log(err.response.data);
+        console.log("error en el servidor");
       });
     },
     //metodo para obtener el rating del usuario loggeado
@@ -2665,8 +2682,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           //se elimina del arreglo de productos en el carrito
           this.carts.splice(cart, 1);
           toast.fire({
-            icon: 'success',
-            title: 'Se agrego a la orden '
+            icon: 'warning',
+            title: 'eliminaste el producto'
           }); //se ejecuta el metodo que guarda el carrito para refrescar
 
           this.storeCart(); //si la cantidad es mayor a uno
@@ -2775,6 +2792,41 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8251,7 +8303,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n}\nbody {\n  background: #424A60;\n}\nbody div .navbar-dark .navbar-content {\n  width: 100%;\n  height: 40px;\n  padding: 0;\n  margin: 0;\n  border-bottom: 2px solid #FF4B2B;\n}\nbody div .navbar-dark .navbar-content .verify .nav-child {\n  color: #fff;\n  text-decoration: none;\n  font-size: 15px;\n  padding: 50px;\n  padding-bottom: 18px;\n  padding-top: 10px;\n}\nbody div .navbar-dark .navbar-content .verify .router-link-active {\n  background: linear-gradient(to right, #FF4B2B, #E40754);\n  width: 200px;\n  height: 30px;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n}\nbody {\n  background: #424A60;\n  margin-bottom: 80px;\n}\nbody div .navbar-dark .navbar-content {\n  width: 100%;\n  height: 40px;\n  padding: 0;\n  margin: 0;\n  border-bottom: 2px solid #FF4B2B;\n}\nbody div .navbar-dark .navbar-content .verify .nav-child {\n  color: #fff;\n  text-decoration: none;\n  font-size: 15px;\n  padding: 50px;\n  padding-bottom: 18px;\n  padding-top: 10px;\n}\nbody div .navbar-dark .navbar-content .verify .router-link-active {\n  background: linear-gradient(to right, #FF4B2B, #E40754);\n  width: 200px;\n  height: 30px;\n}", ""]);
 
 // exports
 
@@ -8270,7 +8322,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "body {\n  overflow-x: hidden;\n}\n.catalogo {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.catalogo .row {\n  padding: 0;\n  margin: 0;\n}\n.catalogo .row .catalogo-child {\n  height: 400px;\n}\n.card-product {\n  top: 0;\n  left: 0;\n  border-radius: 0;\n  position: relative;\n  width: calc(100%/3);\n  height: 350px;\n  background: #000;\n}\n.card-product .image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  overflow: hidden;\n}\n.card-product .image img {\n  width: 100%;\n  height: 100%;\n  transition: 0.5s;\n}\n.card-product:hover .image img {\n  opacity: 0.5;\n  transform: translateX(30%);\n  /*100%*/\n}\n.card-product .details {\n  position: absolute;\n  left: 0;\n  width: 70%;\n  /*100%*/\n  height: 100%;\n  background: linear-gradient(to right, #E40754, #FF4B2B);\n  transition: 0.5s;\n  transform-origin: left;\n  transform: perspective(2000px) rotateY(-90deg);\n}\n.card-product:hover .details {\n  transform: perspective(2000px) rotateY(0deg);\n}\n.card-product .details .center {\n  padding: 20px;\n  text-align: center;\n  background: #fff;\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n}\n.card-product .details .center h1 {\n  margin: 0;\n  padding: 0;\n  font-weight: bold;\n  color: #ff3636;\n  line-height: 20px;\n  font-size: 20px;\n  text-transform: uppercase;\n}\n.card-product .details .center h1 span {\n  font-size: 14px;\n  color: #262626;\n}\n.card-product .details .center p {\n  margin: 10px 0;\n  padding: 0;\n  color: #262626;\n}\n.fa {\n  font-size: 25px;\n}\n.left-bar {\n  float: left;\n  width: 5%;\n  margin-top: 10px;\n}\n.right-bar {\n  margin-top: 10px;\n  float: left;\n  width: 95%;\n}\n.row-bar:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.review-rating:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.left-review {\n  float: left;\n  width: 30%;\n  margin-top: 10px;\n  text-align: center;\n}\n.right-review {\n  float: left;\n  width: 70%;\n  margin-top: 10px;\n}\n.review-title {\n  font-size: 56pt;\n}\n.review-star {\n  margin: 0 0 10px 0;\n}\n.review-people .fa {\n  font-size: 11pt;\n}\n.bar-container {\n  width: 100%;\n  background-color: #f1f1f1;\n  text-align: center;\n  color: white;\n}\n.bar-5 {\n  height: 18px;\n  background: #57bb8a;\n}\n.bar-4 {\n  height: 18px;\n  background-color: #9ace6a;\n}\n.bar-3 {\n  height: 18px;\n  background-color: #ffcf02;\n}\n.bar-2 {\n  height: 18px;\n  background-color: #ff9f02;\n}\n.bar-1 {\n  height: 18px;\n  background-color: #ff6f31;\n}", ""]);
+exports.push([module.i, "body {\n  overflow-x: hidden;\n}\n.catalogo {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.catalogo .row {\n  padding: 0;\n  margin: 0;\n}\n.catalogo .row .catalogo-child {\n  height: 400px;\n}\n.card-product {\n  top: 0;\n  left: 0;\n  border-radius: 0;\n  position: relative;\n  width: calc(100%/3);\n  height: 350px;\n  background: #000;\n}\n.card-product .image {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  overflow: hidden;\n}\n.card-product .image img {\n  width: 100%;\n  height: 100%;\n  transition: 0.5s;\n}\n.card-product:hover .image img {\n  opacity: 0.5;\n  transform: translateX(30%);\n  /*100%*/\n}\n.card-product .details {\n  position: absolute;\n  left: 0;\n  width: 70%;\n  /*100%*/\n  height: 100%;\n  background: linear-gradient(to right, #E40754, #FF4B2B);\n  transition: 0.5s;\n  transform-origin: left;\n  transform: perspective(2000px) rotateY(-90deg);\n}\n.card-product:hover .details {\n  transform: perspective(2000px) rotateY(0deg);\n}\n.card-product .details .center {\n  padding: 20px;\n  text-align: center;\n  background: #fff;\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n}\n.card-product .details .center h1 {\n  margin: 0;\n  padding: 0;\n  font-weight: bold;\n  color: #ff3636;\n  line-height: 20px;\n  font-size: 20px;\n  text-transform: uppercase;\n}\n.card-product .details .center h1 span {\n  font-size: 14px;\n  color: #262626;\n}\n.card-product .details .center p {\n  margin: 10px 0;\n  padding: 0;\n  color: #262626;\n}\n.fa {\n  font-size: 25px;\n}\n.left-bar {\n  float: left;\n  width: 5%;\n  margin-top: 10px;\n}\n.right-bar {\n  margin-top: 10px;\n  float: left;\n  width: 95%;\n}\n.row-bar:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.review-rating:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.left-review {\n  float: left;\n  width: 30%;\n  margin-top: 10px;\n  text-align: center;\n}\n.right-review {\n  float: left;\n  width: 70%;\n  margin-top: 10px;\n}\n.review-title {\n  font-size: 35pt;\n}\n.review-star {\n  margin: 0 0 10px 0;\n}\n.review-people .fa {\n  font-size: 11pt;\n}\n.bar-container {\n  width: 100%;\n  background-color: #f1f1f1;\n  text-align: center;\n  color: white;\n}\n.bar-5 {\n  height: 18px;\n  width: 0;\n  background: #57bb8a;\n}\n.bar-4 {\n  height: 18px;\n  background-color: #9ace6a;\n}\n.bar-3 {\n  height: 18px;\n  width: 0;\n  background-color: #ffcf02;\n}\n.bar-2 {\n  height: 18px;\n  width: 0;\n  background-color: #ff9f02;\n}\n.bar-1 {\n  height: 18px;\n  width: 0;\n  background-color: #ff6f31;\n}", ""]);
 
 // exports
 
@@ -8289,7 +8341,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "footer[data-v-61a7c374] {\n  width: 100%;\n  margin-bottom: 0;\n}", ""]);
+exports.push([module.i, "footer[data-v-61a7c374] {\n  width: 100%;\n  bottom: 0;\n  position: fixed;\n  margin-top: 80px;\n}", ""]);
 
 // exports
 
@@ -43517,7 +43569,10 @@ var render = function() {
                 [
                   _c(
                     "router-link",
-                    { staticClass: "nav-child", attrs: { to: "/cuenta" } },
+                    {
+                      staticClass: "nav-child",
+                      attrs: { exact: "", to: "/cuenta" }
+                    },
                     [
                       _c(
                         "span",
@@ -43535,7 +43590,10 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "router-link",
-                    { staticClass: "nav-child", attrs: { to: "/catalogo" } },
+                    {
+                      staticClass: "nav-child",
+                      attrs: { exact: "", to: "/catalogo" }
+                    },
                     [
                       _c(
                         "span",
@@ -43553,7 +43611,10 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "router-link",
-                    { staticClass: "nav-child", attrs: { to: "/compras" } },
+                    {
+                      staticClass: "nav-child",
+                      attrs: { exact: "", to: "/compras" }
+                    },
                     [
                       _c(
                         "span",
@@ -44160,20 +44221,72 @@ var render = function() {
                               _c("div", { staticClass: "bar-container" }, [
                                 _c("div", {
                                   staticClass: "bar-5",
-                                  style: "width:" + _vm.bar5 + "%;",
+                                  style: "width:" + _vm.bar_5 + "%",
                                   attrs: { id: "bar__5" }
                                 })
                               ])
                             ])
                           ]),
                           _vm._v(" "),
-                          _vm._m(0),
+                          _c("div", { staticClass: "row-bar" }, [
+                            _c("div", { staticClass: "left-bar" }, [
+                              _vm._v("4")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "right-bar" }, [
+                              _c("div", { staticClass: "bar-container" }, [
+                                _c("div", {
+                                  staticClass: "bar-4",
+                                  style: "width:" + _vm.bar_4 + "%"
+                                })
+                              ])
+                            ])
+                          ]),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _c("div", { staticClass: "row-bar" }, [
+                            _c("div", { staticClass: "left-bar" }, [
+                              _vm._v("3")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "right-bar" }, [
+                              _c("div", { staticClass: "bar-container" }, [
+                                _c("div", {
+                                  staticClass: "bar-3",
+                                  style: "width:" + _vm.bar_3 + "%"
+                                })
+                              ])
+                            ])
+                          ]),
                           _vm._v(" "),
-                          _vm._m(2),
+                          _c("div", { staticClass: "row-bar" }, [
+                            _c("div", { staticClass: "left-bar" }, [
+                              _vm._v("2")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "right-bar" }, [
+                              _c("div", { staticClass: "bar-container" }, [
+                                _c("div", {
+                                  staticClass: "bar-2",
+                                  style: "width:" + _vm.bar_2 + "%"
+                                })
+                              ])
+                            ])
+                          ]),
                           _vm._v(" "),
-                          _vm._m(3)
+                          _c("div", { staticClass: "row-bar" }, [
+                            _c("div", { staticClass: "left-bar" }, [
+                              _vm._v("1")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "right-bar" }, [
+                              _c("div", { staticClass: "bar-container" }, [
+                                _c("div", {
+                                  staticClass: "bar-1",
+                                  style: "width:" + _vm.bar_1 + "%"
+                                })
+                              ])
+                            ])
+                          ])
                         ])
                       ]),
                       _vm._v(" "),
@@ -44283,7 +44396,7 @@ var render = function() {
                               _c("img", {
                                 staticClass: "rounded-circle",
                                 attrs: {
-                                  src: "/images/" + comment.avatar,
+                                  src: "/images/usuarios/" + comment.avatar,
                                   alt: "no-image",
                                   width: "50",
                                   height: "50"
@@ -44350,7 +44463,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(4),
+              _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("table", { staticClass: " table table-striped text-left" }, [
@@ -44427,62 +44540,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row-bar" }, [
-      _c("div", { staticClass: "left-bar" }, [_vm._v("4")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "right-bar" }, [
-        _c("div", { staticClass: "bar-container" }, [
-          _c("div", { staticClass: "bar-4", staticStyle: { width: "0%" } })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row-bar" }, [
-      _c("div", { staticClass: "left-bar" }, [_vm._v("3")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "right-bar" }, [
-        _c("div", { staticClass: "bar-container" }, [
-          _c("div", { staticClass: "bar-3", staticStyle: { width: "0%" } })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row-bar" }, [
-      _c("div", { staticClass: "left-bar" }, [_vm._v("2")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "right-bar" }, [
-        _c("div", { staticClass: "bar-container" }, [
-          _c("div", { staticClass: "bar-2", staticStyle: { width: "0%" } })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row-bar" }, [
-      _c("div", { staticClass: "left-bar" }, [_vm._v("1")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "right-bar" }, [
-        _c("div", { staticClass: "bar-container" }, [
-          _c("div", { staticClass: "bar-1", staticStyle: { width: "0%" } })
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -44881,7 +44938,7 @@ var render = function() {
             staticClass: "avatar",
             attrs: {
               src: "/images/usuarios/" + _vm.user.avatar,
-              alt: "",
+              alt: "None",
               srcset: ""
             }
           })
@@ -44933,9 +44990,18 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex mt-4" }, [
-            _c("button", { staticClass: "btn btn-edit text-white" }, [
-              _vm._v("Editar Perfil")
-            ]),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-edit text-white",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "modal",
+                  "data-target": ".bd-example-modal-lg"
+                }
+              },
+              [_vm._v("Editar Perfil")]
+            ),
             _vm._v(" "),
             _c(
               "button",
@@ -44952,10 +45018,91 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade bd-example-modal-lg",
+        attrs: {
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "myLargeModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Nombre")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      domProps: { value: _vm.user.name }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Email")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      domProps: { value: _vm.user.email }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Telefono")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      domProps: { value: _vm.user.telefono }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Direccion")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      domProps: { value: _vm.user.direccion }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("img", {
+                    staticClass: "img-thumbnail",
+                    attrs: {
+                      src: "/images/usuarios/" + _vm.user.avatar,
+                      alt: ""
+                    }
+                  })
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h1", { staticClass: "lead" }, [_vm._v("Editar mi perfil")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -63325,6 +63472,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [{
+  name: 'home',
+  path: '/home',
+  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+}, {
   name: 'cuenta',
   path: '/cuenta',
   component: _components_MiCuenta_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -63356,10 +63507,6 @@ var routes = [{
   name: 'orders',
   path: '/orders',
   component: _components_Orders__WEBPACK_IMPORTED_MODULE_7__["default"]
-}, {
-  name: 'home',
-  path: '/home',
-  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
 }];
 
 /***/ }),

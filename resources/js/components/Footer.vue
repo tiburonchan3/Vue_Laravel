@@ -21,6 +21,8 @@
 <style lang="scss" scoped>
     footer{
         width: 100%;
-        margin-bottom: 0;
+        bottom: 0;
+        position: fixed;
+        margin-top: 80px;
     }
 </style>

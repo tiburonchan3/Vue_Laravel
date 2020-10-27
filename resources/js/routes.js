@@ -10,6 +10,11 @@ import Home from './components/Home.vue';
 
 export const routes = [
     {
+        name: 'home',
+        path: '/home',
+        component: Home
+    },
+    {
         name: 'cuenta',
         path: '/cuenta',
         component: MiCuenta
@@ -49,9 +54,4 @@ export const routes = [
         path: '/orders',
         component: Orders
     },
-    {
-        name: 'home',
-        path: '/home',
-        component: Home
-    }
 ];

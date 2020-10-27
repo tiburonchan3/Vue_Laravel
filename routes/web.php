@@ -46,6 +46,9 @@ Route::get('/user/show','UserController@show');
 
 //accede a la vista tipo
 Route::get('/catalogo', 'CatalogoController@index')->middleware('auth');
+Route::get('/compras', 'CatalogoController@index')->middleware('auth');
+Route::get('/cuenta', 'CatalogoController@index')->middleware('auth');
+Route::get('/checkout', 'CatalogoController@index')->middleware('auth');
 //mostrar todos los productos
 Route::get('/catalogo/show','ProductoController@show');
 /***********************************************************/

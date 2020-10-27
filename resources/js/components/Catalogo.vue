@@ -113,7 +113,7 @@
                                                 <div class="left-bar">5</div>
                                                 <div class="right-bar">
                                                     <div class="bar-container">
-                                                        <div class="bar-5" id="bar__5" :style="'width:'+bar5+'%;'"></div>
+                                                        <div class="bar-5" id="bar__5" :style="'width:'+bar_5+'%'"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,7 +121,7 @@
                                                 <div class="left-bar">4</div>
                                                 <div class="right-bar">
                                                     <div class="bar-container">
-                                                        <div class="bar-4" style="width: 0%;"></div>
+                                                        <div class="bar-4" :style="'width:'+bar_4+'%'"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +129,7 @@
                                                 <div class="left-bar">3</div>
                                                 <div class="right-bar">
                                                     <div class="bar-container">
-                                                        <div class="bar-3" style="width: 0%;"></div>
+                                                        <div class="bar-3" :style="'width:'+bar_3+'%'"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -137,7 +137,7 @@
                                                 <div class="left-bar">2</div>
                                                 <div class="right-bar">
                                                     <div class="bar-container">
-                                                        <div class="bar-2" style="width: 0%;"></div>
+                                                        <div class="bar-2" :style="'width:'+bar_2+'%'"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,7 +145,7 @@
                                                 <div class="left-bar">1</div>
                                                 <div class="right-bar">
                                                     <div class="bar-container">
-                                                        <div class="bar-1" style="width: 0%;"></div>
+                                                        <div class="bar-1" :style="'width:'+bar_1+'%'"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,7 +166,7 @@
                             <p class="lead text-center text-white mt-3">Comentarios acerca del producto</p>
                                 <div class="row mb-3" v-for="comment in AllRating" :key="comment.id">
                                     <div class="col-md-1">
-                                        <img :src="'/images/'+comment.avatar" class="rounded-circle" alt="no-image" width="50" height="50">
+                                        <img :src="'/images/usuarios/'+comment.avatar" class="rounded-circle" alt="no-image" width="50" height="50">
                                     </div>
                                     <div class="col-md-11 pl-3 rating">
                                         <p class="text-info">{{comment.user}}
@@ -258,12 +258,11 @@
                 myRating:[],
                 //obtiene todos los ratings del producto
                 AllRating:[],
-                bar1:0,
-                bar2:0,
-                bar3:0,
-                bar4:0,
-                bar5:0
-
+                bar_1: 0,
+                bar_2:0,
+                bar_3:0,
+                bar_5:0,
+                bar_4:0,
             }
         },
         methods:{
@@ -366,33 +365,49 @@
                     this.AllRating = datos.data;
                     this.totaluser = datos.data.length;
                     let sum = 0;
+
                     for(let i = 0; i < datos.data.length; i++){
                     sum += parseFloat(datos.data[i]['rating']);
                     }
                     let avg = sum/datos.data.length
-                    this.totalrate = parseFloat(avg.toFixed(1));
+                    var bar1 = 0;
+                    var bar2 = 0;
+                    var bar3 = 0;
+                    var bar4 = 0;
+                    var bar5 = 0;
+                    console.log(sum)
+                    if(avg > 0){
+                        this.totalrate = parseFloat(sum.toFixed(1));
+                    }else {
+                        this.totalrate = 0
+                    }
                     for(let j = 0; j < datos.data.length; j++){
                         if(parseInt(datos.data[j]['rating']) == '1'){
-                            this.bar1 += 1
+                            bar1 += 1
                         }
                         if(parseInt(datos.data[j]['rating']) == '2'){
-                            this.bar2 += 1
+                            bar2 += 1
                         }
                         if(parseInt(datos.data[j]['rating']) == '3'){
-                            this.bar3 += 1
+                            bar3 += 1
                         }
                         if(parseInt(datos.data[j]['rating']) == '4'){
-                            this.bar4 += 1
+                            bar4 += 1
                         }
                         if(parseInt(datos.data[j]['rating']) == '5'){
-                            this.bar5 += 1
+                            bar5 += 1
                         }
                     }
+                    this.bar_1 = bar1
+                    this.bar_2 = bar2
+                    this.bar_3 = bar3
+                    this.bar_4 = bar4
+                    this.bar_5 = bar5
                 })
                 //en caso de error
                 .catch(err=>{
                     //se muestra el mensaje de error
-                    console.log(err.response.data)
+                    console.log("error en el servidor")
                 })
             },
             //metodo para obtener el rating del usuario loggeado

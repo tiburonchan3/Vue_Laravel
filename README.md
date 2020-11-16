@@ -30,6 +30,7 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 ## Tencnologies and used programs
 
 In this proyect I use the nexts tecnologies:
+
 -For install the javascript packages - **[Yarn](https://yarnpkg.com/)**
 
 -For install the laravel packages and for install Laravel - **[Composer](https://getcomposer.org/)**
@@ -43,6 +44,13 @@ In this proyect I use the nexts tecnologies:
 -Database - **[MySql](https://www.mysql.com/)**
 
 -Javascript Packages Manager - **[NodeJS](https://nodejs.org/en/)**
+
+## Instalation 
+
+-Firt Step: clone from GitHub
+```
+git clone https://github.com/tiburonchan3/Vue_Laravel
+```
 
 ## Laravel Sponsors
 

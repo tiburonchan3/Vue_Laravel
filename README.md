@@ -30,20 +30,20 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 ## Tencnologies and used programs
 
 In this proyect I use the nexts tecnologies:
--For install the javascript packages
-- **[Yarn](https://yarnpkg.com/)**
--For install the laravel packages and for install Laravel
-- **[Composer](https://getcomposer.org/)**
--For the views 
-- **[VueJS](https://vuejs.org/)**
--CSS preprocessor
-- **[Sass](https://sass-lang.com/)** 
--CSS framework
-- **[Bootstrap](https://getbootstrap.com/)**
--Database
-- **[MySql](https://www.mysql.com/)**
--Javascript Packages Manager
-- **[NodeJS](https://nodejs.org/en/)**
+-For install the javascript packages - **[Yarn](https://yarnpkg.com/)**
+
+-For install the laravel packages and for install Laravel - **[Composer](https://getcomposer.org/)**
+
+-Javascript Frontend framework - **[VueJS](https://vuejs.org/)**
+
+-CSS preprocessor - **[Sass](https://sass-lang.com/)** 
+
+-CSS framework - **[Bootstrap](https://getbootstrap.com/)**
+
+-Database - **[MySql](https://www.mysql.com/)**
+
+-Javascript Packages Manager - **[NodeJS](https://nodejs.org/en/)**
+
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).

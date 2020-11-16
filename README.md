@@ -79,7 +79,7 @@ $ php artisan migrate
 ```
 $ php artisan db:seed
 ```
--Now is time to install de javascript dependencies 
+-Now is time to install the javascript dependencies 
 ```
 $ yarn
 ```

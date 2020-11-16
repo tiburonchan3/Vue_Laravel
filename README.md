@@ -1,4 +1,4 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" width="400"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -49,7 +49,15 @@ In this proyect I use the nexts tecnologies:
 
 -Firt Step: clone from GitHub
 ```
-git clone https://github.com/tiburonchan3/Vue_Laravel
+$ git clone https://github.com/tiburonchan3/Vue_Laravel
+```
+-Next using the command line(GitBash or CMD) and enter the project folder
+```
+$ cd Vue_Laravel
+```
+-Then install the componser dependencies using the command line
+```
+$ composer install
 ```
 
 ## Laravel Sponsors

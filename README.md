@@ -59,7 +59,50 @@ $ cd Vue_Laravel
 ```
 $ composer install
 ```
-
+-Next copy the .env.example to .env
+```
+$ copy .env.example .env
+```
+-Now generate a laravel key
+```
+$ php artisan key:generate
+```
+-You need create a database in MySql and edit the .env file
+```
+DB_DATABASE=laravel_vue
+```
+-Then execute the database migrations
+```
+$ php artisan migrate
+```
+-Next execute the database seeders
+```
+$ php artisan db:seed
+```
+-Now is time to install de javascript dependencies 
+```
+$ yarn
+```
+or
+```
+$ npm install
+```
+-Next check if mysql server is active and execute the next command 
+```
+$ php artisan serve 
+```
+-And finally execute the javascript compiler
+```
+$ yarn watch
+```
+or
+```
+$ npm run watch
+```
+-The project is open in the next route
+```
+http://127.0.0.1:8000/
+```
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).

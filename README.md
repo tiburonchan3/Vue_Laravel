@@ -1,4 +1,4 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" width="400"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -27,9 +27,10 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Tencnologies and used programs
+## Tecnologies and used programs
 
 In this proyect I use the nexts tecnologies:
+
 -For install the javascript packages - **[Yarn](https://yarnpkg.com/)**
 
 -For install the laravel packages and for install Laravel - **[Composer](https://getcomposer.org/)**
@@ -44,6 +45,64 @@ In this proyect I use the nexts tecnologies:
 
 -Javascript Packages Manager - **[NodeJS](https://nodejs.org/en/)**
 
+## Instalation 
+
+-Firt Step: clone from GitHub
+```
+$ git clone https://github.com/tiburonchan3/Vue_Laravel
+```
+-Next using the command line(GitBash or CMD) and enter the project folder
+```
+$ cd Vue_Laravel
+```
+-Then install the componser dependencies using the command line
+```
+$ composer install
+```
+-Next copy the .env.example to .env
+```
+$ copy .env.example .env
+```
+-Now generate a laravel key
+```
+$ php artisan key:generate
+```
+-You need create a database in MySql and edit the .env file
+```
+DB_DATABASE=laravel_vue
+```
+-Then execute the database migrations
+```
+$ php artisan migrate
+```
+-Next execute the database seeders
+```
+$ php artisan db:seed
+```
+-Now is time to install the javascript dependencies 
+```
+$ yarn
+```
+or
+```
+$ npm install
+```
+-Next check if mysql server is active and execute the next command 
+```
+$ php artisan serve 
+```
+-And finally execute the javascript compiler
+```
+$ yarn watch
+```
+or
+```
+$ npm run watch
+```
+-The project is open in the next route
+```
+http://127.0.0.1:8000/
+```
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).

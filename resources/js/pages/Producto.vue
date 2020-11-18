@@ -18,38 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(producto, index) in productos" :key="index">
-              <th scope="row">{{ producto.id }}</th>
-              <td>
-                <img
-                  :src="'/images/productos/' + producto.image"
-                  width="80"
-                  height="80"
-                />
-              </td>
-              <td>{{ producto.nombre }}</td>
-              <td>$ {{ producto.precio }}</td>
-              <td>{{ producto.stock }}</td>
-              <td>{{ producto.tipo }}</td>
-              <td>{{ producto.created_at }}</td>
-              <td>{{ producto.updated_at }}</td>
-              <td>
-                <button
-                  @click="Edit(producto.id)"
-                  class="btn btn-sm btn-info text-white"
-                  data-target="#product-modal-edit"
-                  data-toggle="modal"
-                >
-                  Editar
-                </button>
-                <button
-                  @click="Destroy(producto.id)"
-                  class="btn btn-sm btn-danger"
-                >
-                  Eliminar
-                </button>
-              </td>
-            </tr>
+            <ProductItemListComponent v-for="(prod,index) in productos" :key="index" :producto="prod" />
           </tbody>
         </table>
         <div class="row mt-5">
@@ -129,107 +98,21 @@
         </div>
       </div>
     </div>
-    <div
-      id="product-modal-edit"
-      class="modal fade"
-      tabindex="-1"
-      role="dialog"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body p-4">
-            <h5 class="lead text-center mb-3">Editar Producto</h5>
-            <div class="row">
-              <div class="col-8" v-if="productoEdit">
-                <form @submit.prevent="UpdateProduct(productoEdit.id)">
-                  <div class="form-group row">
-                    <label class="col-form-label col-3">Nombre</label>
-                    <input
-                      id="nombre_producto"
-                      :value="productoEdit.nombre"
-                      class="form-control col-9"
-                      type="text"
-                      name=""
-                    />
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-form-label col-3">Tipo</label>
-                    <select id="id_tipo" class="form-control col-9">
-                      <option :value="productoEdit.id_tipo" selected>
-                        {{ productoEdit.tipo }}
-                      </option>
-                      <option
-                        v-for="(tipo, index) in tipos"
-                        :key="index"
-                        :value="tipo.id"
-                        v-text="tipo.name"
-                      ></option>
-                    </select>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-form-label col-3">Stock</label>
-                    <input
-                      id="stock"
-                      :value="productoEdit.stock"
-                      class="form-control col-9"
-                      type="text"
-                      name=""
-                    />
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-form-label col-3">Precio</label>
-                    <input
-                      id="precio"
-                      :value="productoEdit.precio"
-                      class="form-control col-9"
-                      type="text"
-                      name=""
-                    />
-                  </div>
-                  <div class="row">
-                    <button
-                      type="submit"
-                      class="btn btn-primary col-3 offset-5"
-                    >
-                      Editar
-                    </button>
-                    <button
-                      class="btn btn-danger col-3 ml-1"
-                      data-dismiss="modal"
-                    >
-                      cancelar
-                    </button>
-                  </div>
-                </form>
-              </div>
-              <div class="col-4 d-flex">
-                <img
-                  v-if="productoEdit"
-                  :src="'images/' + productoEdit.image"
-                  class="rounded-circle img"
-                  alt=""
-                  width="200"
-                  height="200"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <script>
 import ProductoForm from "../components/ProductoForm";
+import ProductItemListComponent from "../components/ProductItemListComponent";
+import {OnUpdateEvent} from "../components/EditProductFormComponent";
+import {OnDeleteEvent} from "../components/ProductItemListComponent";
 export default {
   components: {
     ProductoForm,
+    ProductItemListComponent
   },
   data() {
     return {
       tipos: [],
-      productoEdit: [],
       productos: [],
       pagination: {},
       nombre: "",
@@ -240,15 +123,15 @@ export default {
     };
   },
   mounted() {
-    this.GetTipos();
     this.GetResult("/producto/show");
+    OnDeleteEvent.$on('deleted',resp=>{
+        this.GetResult("/producto/show")
+    });
+    OnUpdateEvent.$on('product-edit',resp=>{
+        this.GetResult("/producto/show")
+    })
   },
   methods: {
-    GetTipos() {
-      axios.get("/tipo/show").then((resp) => {
-        this.tipos = resp.data.data;
-      });
-    },
     GetProducto(url) {
       axios.get("/producto/edit").then((resp) => {
         this.tipos = resp.data.data;
@@ -271,64 +154,6 @@ export default {
             prev_link: datos.links.prev,
             next_link: datos.links.next,
           };
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
-    },
-    Edit(id) {
-      axios
-        .get("/producto/edit/" + id)
-        .then((resp) => {
-          console.log((this.productoEdit = resp.data.data));
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
-    },
-    UpdateProduct(id) {
-      this.nombre = document.getElementById("nombre_producto").value;
-      this.id_tipo = document.getElementById("id_tipo").value;
-      this.stock = document.getElementById("stock").value;
-      this.precio = document.getElementById("precio").value;
-      if (
-        this.nombre != "" &&
-        this.id_tipo != "" &&
-        this.stock != "" &&
-        this.precio != ""
-      ) {
-        axios
-          .put("/producto/update/" + id, {
-            id: id,
-            nombre: this.nombre,
-            id_tipo: this.id_tipo,
-            stock: this.stock,
-            precio: this.precio,
-          })
-          .then((resp) => {
-            this.GetResult("/producto/show");
-            $("#product-modal-edit").modal("hide");
-            toast.fire({
-              icon: "success",
-              title: "Se Actualizo correctamente",
-            });
-          })
-          .catch((err) => {
-            console.log(err.response.data);
-          });
-      }
-    },
-    Destroy(id) {
-      axios
-        .delete("/producto/destroy/" + id, {
-          id: id,
-        })
-        .then((resp) => {
-          this.GetResult("/producto/show");
-          toast.fire({
-            icon: "success",
-            title: "Se Elimino correctamente",
-          });
         })
         .catch((err) => {
           console.log(err.response.data);

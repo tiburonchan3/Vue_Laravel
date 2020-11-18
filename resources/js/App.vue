@@ -40,13 +40,13 @@
     </nav>
     <br />
     <router-view></router-view>
-    <Footer />
+    <FooterComponent />
   </div>
 </template>
 
 <script>
 import user from "./mixins/user";
-import Footer from "./components/Footer";
+import FooterComponent from "./components/FooterComponent";
 import Home from "./pages/Home";
 export default {
   mixins: [user],
@@ -56,7 +56,7 @@ export default {
     };
   },
   components: {
-    Footer,
+    FooterComponent,
     Home,
   },
   methods: {

@@ -23,7 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
     //se usa para redirigir al registrarse
-    public const PROFILE = '/profile';
+    public const PROFILE = '/cuenta';
 
     /**
      * Define your route model bindings, pattern filters, etc.

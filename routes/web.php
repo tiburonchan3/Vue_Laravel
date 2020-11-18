@@ -25,8 +25,6 @@ Route::group(['prefix' => 'producto'], function () {
     Route::get('/show', 'ProductoController@show');
     //buscar un producto
     Route::post('/search', 'ProductoController@search');
-    //buscar productos por tipo
-    Route::post('/searchType', 'ProductoController@searchType');
     //guardar producto
     Route::post('/store', 'ProductoController@store');
     //buscar y obtener el registro a editar
@@ -50,6 +48,10 @@ Route::get('/compras', 'CatalogoController@index')->middleware('auth');
 Route::get('/cuenta', 'CatalogoController@index')->middleware('auth');
 Route::get('/checkout', 'CatalogoController@index')->middleware('auth');
 Route::get('/detail/{id}', 'CatalogoController@index')->middleware('auth');
+Route::get('/productos', 'CatalogoController@index')->middleware('auth');
+Route::get('/tipos', 'CatalogoController@index')->middleware('auth');
+Route::get('/users', 'CatalogoController@index')->middleware('auth');
+Route::get('/orders', 'CatalogoController@index')->middleware('auth');
 //mostrar todos los productos
 Route::get('/catalogo/show', 'ProductoController@show');
 /***********************************************************/

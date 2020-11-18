@@ -69,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $role_id = 2;
+        $role_id = 1;
         $avatar = "user.png";
         return User::create([
             'name' => $data['name'],

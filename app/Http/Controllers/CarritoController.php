@@ -6,14 +6,8 @@ use App\Order;
 use App\Producto;
 use Illuminate\Http\Request;
 
-use function GuzzleHttp\json_decode;
-
 class CarritoController extends Controller
 {
-    public function index()
-    {
-        return view('cart.index');
-    }
     public function store(Request $request)
     {
         #se recorre cada item que viene en al arreglo de productos

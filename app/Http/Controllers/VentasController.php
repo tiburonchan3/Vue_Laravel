@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class VentasController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('ventas.index');
     }
-    public function show(){
+    public function show()
+    {
         return VentasResource::collection(Order::latest()->paginate(5));
     }
     public function orderByUser()

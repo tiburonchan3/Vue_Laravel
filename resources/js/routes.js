@@ -1,12 +1,13 @@
-import Catalogo from './components/Catalogo.vue';
-import MiCuenta from './components/MiCuenta.vue';
-import Producto from './components/Producto.vue';
-import Tipo from './components/Tipo.vue';
-import User from './components/User.vue';
-import Checkout from './components/Checkout.vue';
-import MisCompras from './components/MisCompras.vue';
-import Orders from './components/Orders';
-import Home from './components/Home.vue';
+import Catalogo from './pages/Catalogo.vue';
+import MiCuenta from './pages/MiCuenta.vue';
+import Producto from './pages/Producto.vue';
+import Tipo from './pages/Tipo.vue';
+import User from './pages/User.vue';
+import Checkout from './pages/Checkout.vue';
+import MisCompras from './pages/MisCompras.vue';
+import Orders from './pages/Orders';
+import Home from './pages/Home.vue';
+import Detail from './pages/Detail.vue';
 
 export const routes = [
     {
@@ -54,4 +55,9 @@ export const routes = [
         path: '/orders',
         component: Orders
     },
+    {
+        name: 'detail',
+        path: '/detail/:id',
+        component: Detail
+    }
 ];

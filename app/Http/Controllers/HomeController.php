@@ -17,8 +17,6 @@ class HomeController extends Controller
     {
         //se usa el middeware de autentificacion
         $this->middleware('auth');
-
-
     }
 
     /**
@@ -33,7 +31,8 @@ class HomeController extends Controller
         return view('home');
     }
     //funcion para obtener los 3 productos agregados recientemente
-    public function show(){
+    public function show()
+    {
         //variable que obtiene en forma de coleccin los 3 productos recientes
         $productos =  ProductoResource::collection(Producto::latest()->paginate(3));
         //se retona la variable

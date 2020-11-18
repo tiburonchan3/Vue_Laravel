@@ -9,13 +9,16 @@ use Carbon\Carbon;
 
 class TipoController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('tipo.index');
     }
-    public function show(){
+    public function show()
+    {
         return TypeResource::collection(Tipo::latest()->paginate(5));
     }
-    public function showAll(){
+    public function showAll()
+    {
         return TypeResource::collection(Tipo::all());
     }
 
@@ -28,15 +31,16 @@ class TipoController extends Controller
     }
     public function edit($id)
     {
-      $tipo = Tipo::findOrFail($id);
-      return response()->json($tipo);
+        $tipo = Tipo::findOrFail($id);
+        return response()->json($tipo);
     }
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $tipo = Tipo::findOrFail($id)->update([
-            'name'=>request('name'),
-            'updated_at'=>Carbon::now()
+            'name' => request('name'),
+            'updated_at' => Carbon::now()
         ]);
-       return response()->json("Se actualizo con exito");
+        return response()->json("Se actualizo con exito");
     }
     public function destroy($id)
     {

@@ -10,67 +10,74 @@ use Intervention\Image\Facades\Image;
 
 class ProductoController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('producto.index');
     }
-    public function ProductType(){
+    public function ProductType()
+    {
         return view('producto.productType');
     }
-    public function show(){
+    public function show()
+    {
         return ProductoResource::collection(Producto::latest()->paginate(8));
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'image' => 'required',
-            'nombre'=>'required',
-            'id_tipo'=>'required',
-            'stock'=>'required',
-            'precio'=>'required'
+            'nombre' => 'required',
+            'id_tipo' => 'required',
+            'stock' => 'required',
+            'precio' => 'required'
         ]);
 
-        if($request->get('image'))
-        {
+        if ($request->get('image')) {
             $image = $request->get('image');
-            $name = time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-            Image::make($request->get('image'))->resize(510,510)->save(public_path('images/productos/').$name);
-        }else{
+            $name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+            Image::make($request->get('image'))->resize(510, 510)->save(public_path('images/productos/') . $name);
+        } else {
             $name = 'producto.jpg';
         }
 
         $producto = Producto::create([
-            'nombre'=>request('nombre'),
-            'precio'=>request('precio'),
-            'stock'=>request('stock'),
-            'image'=>$name,
-            'id_tipo'=>request('id_tipo')
+            'nombre' => request('nombre'),
+            'precio' => request('precio'),
+            'stock' => request('stock'),
+            'image' => $name,
+            'id_tipo' => request('id_tipo')
         ]);
         return ProductoResource::make($producto);
     }
     public function edit($id)
     {
-      return ProductoResource::make(Producto::findOrFail($id));
+        return ProductoResource::make(Producto::findOrFail($id));
     }
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $producto = Producto::findOrFail($id)->update([
-            'id'=>$id,
-            'nombre'=>request('nombre'),
-            'precio'=>request('precio'),
-            'stock'=>request('stock'),
-            'id_tipo'=>request('id_tipo'),
-            'updated_at'=>Carbon::now()
+            'id' => $id,
+            'nombre' => request('nombre'),
+            'precio' => request('precio'),
+            'stock' => request('stock'),
+            'id_tipo' => request('id_tipo'),
+            'updated_at' => Carbon::now()
         ]);
         return json_encode($producto);
     }
-    public function destroy($id){
+    public function destroy($id)
+    {
         Producto::destroy($id);
         return;
     }
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $search = $request->get('nombre');
         $producto = ProductoResource::collection(Producto::where('nombre', 'LIKE', "%$search%")->get());
         return $producto;
     }
-    public function searchType(Request $request){
+    public function searchType(Request $request)
+    {
         $search = $request->get('tipo');
         $producto = ProductoResource::collection(Producto::where('id_tipo', $search)->get());
         return $producto;
